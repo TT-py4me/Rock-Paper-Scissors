@@ -12,8 +12,8 @@ return(answer)
 //play single round
 const oneRoundRPS = function(computerSelection, playerSelection) {
 
-const winner=""; 
-const roundstatus="";
+var winner=""; 
+var roundstatus="";
 
 if(computerSelection === "rock") { //checking memory 
   
@@ -65,16 +65,43 @@ if(roundstatus != "tie"){
  
 };
 
-/*
-
-const player = input //dowhile loop for input add later
-
-const computer = getComputerChoice()
-//call
-oneRoundRPS(computer,player) //argue function with computer and player choices
 
 //later, use do while to replay a tie, in game function
 
-*/
+
+//ensure player choice is correct. Computer choice is built to be valid
+
+for ( let round=1; round<6; round++) {
+    
+    console.log(`Round ${round} \n\n`)
+    console.log("Rock\nPaper\nScissors\nShoot!\n ")
+    var playerSelection;
+    var computerSelection;
+    
+   do { //get and display results of round, repeat round if there is a tie
+
+     do{  //get valid playerSelection and get computerSelection
+        console.log("(rock, paper, or scissors?)");
+        playerSelection = prompt(); 
+        computerSelection = getComputerChoice();
+     } while (playerSelection != "rock" && playerSelection != "paper" && playerSelection != "scissors")
+
+    console.log("The computer chose " + computerSelection) 
+    console.log(oneRoundRPS(computerSelection, playerSelection)) //prints results of round  
+
+    if(oneRoundRPS(computerSelection, playerSelection) === "tie"){
+        console.log(`Let's repeat round ${round}!`)
+    }
+   } while (oneRoundRPS(computerSelection, playerSelection) === "tie")
+
+}
 
 
+
+
+
+
+//To do: change winner (second function oneRoundRPS) in each switch to a statement like `you win/lose. ${computer/player} beats ${player/computer}` 
+//also change roundstatus, maybe add  "the round is a tie!"
+
+//changed strings from const to var so I could change strings
