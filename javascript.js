@@ -136,9 +136,3 @@ console.log("This final winner is: " + game() + "!")
 
 
 
-//To do: change winner (second function oneRoundRPS) in each switch to a statement like `you win/lose. ${computer/player} beats ${player/computer}` 
-//also change roundstatus, maybe add  "the round is a tie!"
-
-//changed strings from const to var so I could change strings
-
-//next: change 2nd function, create function game()
