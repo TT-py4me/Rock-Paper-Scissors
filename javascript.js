@@ -128,7 +128,7 @@ if (player_wins > computer_wins){
 return(finalwinner)
 };
 
-if (finalwinner !=0) {
+if (game() !=0) {
     console.log("This final winner is: " + game() + "!")
 }
 
