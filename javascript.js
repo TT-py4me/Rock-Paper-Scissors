@@ -24,12 +24,12 @@ const game = function(){
     return 0
   }
   } while (do_you != "y" && do_you != "n")
-  
 
 
+  for ( let round=1; round<6; round++) {  
 
-//play single round function
-const oneRoundRPS = function(computerSelection, playerSelection) {
+   //function for one round
+   const oneRoundRPS = function(computerSelection, playerSelection) {
 
     var winner; 
     var roundstatus; 
@@ -90,11 +90,9 @@ const oneRoundRPS = function(computerSelection, playerSelection) {
     
      
     };
+//end of single round function
 
 
-
-
-  for ( let round=1; round<6; round++) { 
     
     console.log(`Round ${round} \n\n`)
     console.log("Rock\nPaper\nScissors\nShoot!\n ")
@@ -134,11 +132,6 @@ return(finalwinner)
 game()
 
 
-
-
-//To-do:
-//Accurately calculate the score after each round
-//how: calculate player_wins and computer_wins correctly, in proper scope 
 
 
 
