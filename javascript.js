@@ -10,31 +10,29 @@ return(answer)
 
 
 
-
-
-//later, use do while to replay a tie, in game function
-
-
-//ensure player choice is correct. Computer choice is built to be valid
 const game = function(){
   var finalwinner;
-  let player_wins=0;
-  let computer_wins0;
+  let player_wins=0;    
+  let computer_wins=0;
 
   console.log("Let's play a game of rock paper scissors. Are you in? (y/n)")
-  const do_you = prompt();
+  var do_you;
+  do{
+     do_you = prompt().toLowerCase(); 
   if(do_you != "y"){
     console.log("Maybe next time")
     return 0
   }
+  } while (do_you != "y" && do_you != "n")
+  
 
 
 
 //play single round function
 const oneRoundRPS = function(computerSelection, playerSelection) {
 
-    var winner=""; 
-    var roundstatus="";
+    var winner; 
+    var roundstatus; 
     
     if(computerSelection === "rock") { //checking memory 
       
@@ -89,6 +87,7 @@ const oneRoundRPS = function(computerSelection, playerSelection) {
     }else {
         return(roundstatus)
     }
+    
      
     };
 
@@ -106,7 +105,7 @@ const oneRoundRPS = function(computerSelection, playerSelection) {
 
       do{  //get valid playerSelection and get computerSelection
         console.log("(rock, paper, or scissors?)");
-        playerSelection = prompt(); 
+        playerSelection = prompt().toLowerCase(); 
         computerSelection = getComputerChoice();
       } while (playerSelection != "rock" && playerSelection != "paper" && playerSelection != "scissors")
 
@@ -119,22 +118,32 @@ const oneRoundRPS = function(computerSelection, playerSelection) {
    } while (oneRoundRPS(computerSelection, playerSelection) === "tie")
 
 }
-
+console.log(player_wins)  //testing
+console.log(computer_wins)//testing
 if (player_wins > computer_wins){
     finalwinner = "player"
+    console.log("This final winner is: " + finalwinner + "!")
 } else if (player_wins < computer_wins) {
     finalwinner = "computer"
+    console.log("This final winner is: " + finalwinner + "!")
 }
+
 return(finalwinner)
 };
 
-if (game() !=0) {
-    console.log("This final winner is: " + game() + "!")
-}
+game()
 
 
 
 
+//To-do:
+//Accurately calculate the score after each round
+//how: calculate player_wins and computer_wins correctly, in proper scope 
+
+
+
+    
+    
 
 
 
