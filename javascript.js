@@ -11,33 +11,25 @@ return(answer)
 
 
 const game = function(){
+
   var finalwinner;
   let player_wins=0;    
   let computer_wins=0;
 
-  console.log("Let's play a game of rock paper scissors. Are you in? (y/n)")
-  var do_you;
-  do{
-     do_you = prompt().toLowerCase(); 
-  if(do_you != "y"){
-    console.log("Maybe next time")
-    return 0
-  }
-  } while (do_you != "y" && do_you != "n")
+  
 
-
-  for ( let round=1; round<6; round++) {  
+  //for ( let round=1; round<6; round++) {  //////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
    //function for one round
-   const oneRoundRPS = function(computerSelection, playerSelection) {
+   const playRound = function(computerSelection, playerSelection) {
 
     var winner; 
     var roundstatus; 
     
     if(computerSelection === "rock") { //checking memory 
       
-      switch(playerSelection) {
-        case  "rock":
+      switch(playerSelection) {                                                       ////////player selection==results of button/////////////
+        case  "rock":                                                                 //maybe change "rock" "paper" and "scissors" in switch
             roundstatus = "tie"
             break;
         case "paper":
@@ -51,7 +43,7 @@ const game = function(){
       }
     } else if(computerSelection === "paper") {
       
-      switch(playerSelection) {
+      switch(playerSelection) {                                                         ////////player selection==results of button/////////////
         case  "rock":
             winner= "Computer wins this round! Paper beats rock."
             computer_wins =+1;
@@ -66,7 +58,7 @@ const game = function(){
       }
     } else if(computerSelection === "scissors") {
     
-      switch(playerSelection) {
+      switch(playerSelection) {                                                         ////////player selection==results of button/////////////
         case  "rock":
             winner = "Player wins this round! Rock beats scissors."
             player_wins =+1;
@@ -100,22 +92,20 @@ const game = function(){
     var computerSelection;
     
    do { //get and display results of round, repeat round if there is a tie
-
-      do{  //get valid playerSelection and get computerSelection
+      
         console.log("(rock, paper, or scissors?)");
-        playerSelection = prompt().toLowerCase(); 
+        playerSelection = prompt().toLowerCase();                                ////////player selection==results of button///////////// 
         computerSelection = getComputerChoice();
-      } while (playerSelection != "rock" && playerSelection != "paper" && playerSelection != "scissors")
 
     console.log("Computer's selection: " + computerSelection) 
-    console.log(oneRoundRPS(computerSelection, playerSelection)) //prints results of round  
+    console.log(playRound(computerSelection, playerSelection)) //prints results of round  
 
-    if(oneRoundRPS(computerSelection, playerSelection) === "tie"){
+    if(playRound(computerSelection, playerSelection) === "tie"){
         console.log(`Let's repeat round ${round}!`)
     }
-   } while (oneRoundRPS(computerSelection, playerSelection) === "tie")
+   } while (playRound(computerSelection, playerSelection) === "tie")
 
-}
+//}/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 console.log(player_wins)  //testing
 console.log(computer_wins)//testing
 if (player_wins > computer_wins){
@@ -135,8 +125,10 @@ game()
 
 
 
+
     
     
+
 
 
 
