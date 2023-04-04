@@ -86,7 +86,7 @@ const game = function(){
       document.getElementById('roundstatus').innerHTML = "Let's repeat round " + round;  //delete when next round
       return roundstatus;
     } else {
-      document.r
+      document.getElementById('roundstatus').innerHTML = null;
       console.log(`Round ${round} has finished`)                   ///move div
       round++;
       if(player_wins===5 || computer_wins===5){
