@@ -74,13 +74,20 @@ const game = function(){
     }
     
     //return results
-    if(roundstatus != "tie"){
-        return(winner)
-    }else {
-        return(roundstatus)
+    if(roundstatus === "tie"){
+      console.log(roundstatus);
+      console.log(`Let's repeat round ${round}!`)
+      return roundstatus;
+    } else {
+      console.log(`Round ${round} has finished`)
+      round++;
+      if(player_wins===5 || computer_wins===5){
+          continueGame();
+          return;
+      }
+      return winner; 
     }
-    
-     
+ 
     };
 //end of single round function
 
@@ -131,10 +138,8 @@ function givePlayerSelection3 (){
     console.log("computer current score: " + computer_wins)//testing
     
 }
-    
-    
-    
-   do { 
+       
+  
 
     console.log("Computer's selection: " + computerSelection) 
     console.log(playRound(computerSelection, playerSelection)) //prints results of round  
@@ -142,7 +147,7 @@ function givePlayerSelection3 (){
     if(oneRoundRPS(computerSelection, playerSelection) === "tie"){
         console.log(`Let's repeat round ${round}!`)
     }
-   } while (oneRoundRPS(computerSelection, playerSelection) === "tie")
+   
 
 if (player_wins > computer_wins){
     finalwinner = "player"
