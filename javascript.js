@@ -20,6 +20,8 @@ const game = function(){
   var playerSelection = "";
   var computerSelection = "";
 
+  let round=1;
+
    //function for one round
    const playRound = function(computerSelection, playerSelection) {
 
@@ -34,11 +36,11 @@ const game = function(){
             break;
         case "paper":
             winner = "Player wins this round! Paper beats rock"
-            player_wins =+1;
+            player_wins +=1;
             break;
         case "scissors":
             winner = "Computer wins this round! Rock beats scissors."
-            computer_wins =+1;
+            computer_wins +=1;
             break;
       }
     } else if(computerSelection === "paper") {
@@ -46,14 +48,14 @@ const game = function(){
       switch(playerSelection) {                                                        
         case  "rock":
             winner= "Computer wins this round! Paper beats rock."
-            computer_wins =+1;
+            computer_wins +=1;
             break;
         case "paper":
             roundstatus = "tie"
             break;
         case "scissors":
             winner = "Player wins this round! Scissors beats paper."
-            player_wins =+1;
+            player_wins +=1;
             break;
       }
     } else if(computerSelection === "scissors") {
@@ -61,11 +63,11 @@ const game = function(){
       switch(playerSelection) {                                                        
         case  "rock":
             winner = "Player wins this round! Rock beats scissors."
-            player_wins =+1;
+            player_wins +=1;
             break;
         case "paper":
             winner = "Computer wins this round! Scissors beats paper."  
-            computer_wins =+1;
+            computer_wins +=1;
             break;
         case "scissors":
             roundstatus = "tie"
