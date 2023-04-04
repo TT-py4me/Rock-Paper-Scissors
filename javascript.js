@@ -12,13 +12,13 @@ return(answer)
 
 const game = function(){
 
+  console.log("Rock\nPaper\nScissors\nShoot!\n ")
   var finalwinner;
   let player_wins=0;    
   let computer_wins=0;
 
-  
-
-  //for ( let round=1; round<6; round++) {  //////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+  var playerSelection = "";
+  var computerSelection = "";
 
    //function for one round
    const playRound = function(computerSelection, playerSelection) {
@@ -26,10 +26,10 @@ const game = function(){
     var winner; 
     var roundstatus; 
     
-    if(computerSelection === "rock") { //checking memory 
+    if(computerSelection === "rock") { 
       
-      switch(playerSelection) {                                                       ////////player selection==results of button/////////////
-        case  "rock":                                                                 //maybe change "rock" "paper" and "scissors" in switch
+      switch(playerSelection) {                                                       
+        case  "rock":
             roundstatus = "tie"
             break;
         case "paper":
@@ -43,7 +43,7 @@ const game = function(){
       }
     } else if(computerSelection === "paper") {
       
-      switch(playerSelection) {                                                         ////////player selection==results of button/////////////
+      switch(playerSelection) {                                                        
         case  "rock":
             winner= "Computer wins this round! Paper beats rock."
             computer_wins =+1;
@@ -58,13 +58,13 @@ const game = function(){
       }
     } else if(computerSelection === "scissors") {
     
-      switch(playerSelection) {                                                         ////////player selection==results of button/////////////
+      switch(playerSelection) {                                                        
         case  "rock":
             winner = "Player wins this round! Rock beats scissors."
             player_wins =+1;
             break;
         case "paper":
-            winner = "Computer wins this round! Scissors beats paper."  //print tie
+            winner = "Computer wins this round! Scissors beats paper."  
             computer_wins =+1;
             break;
         case "scissors":
@@ -84,30 +84,66 @@ const game = function(){
     };
 //end of single round function
 
+//ask for player selection  //get click
+const rock = document.getElementById("rock");        //must be in game()
+const paper= document.getElementById("paper");
+const scissors = document.getElementById("scissors");
+for(let round=1; round<6; round++){   
+rock.addEventListener('click', givePlayerSelection1, continueGame);
+paper.addEventListener('click', givePlayerSelection2, continueGame);
+scissors.addEventListener('click', givePlayerSelection3, continueGame);
+}
 
+function givePlayerSelection1 (){
+    //ask for computer selection
+    computerSelection = getComputerChoice();
+    playerSelection = document.getElementById("rock").innerHTML.toLowerCase();
+    console.log("The player has made a choice of ----------- " + playerSelection); //test
+    console.log("At the same time as the player, the computer made a choice of " + computerSelection); //test
+    console.log("Between player and computer, who wins this round? \n -\n-\n-\n"); //test
+    console.log(playRound(computerSelection, playerSelection)); 
+    console.log("player current score: " + player_wins)  //testing
+    console.log("computer current score: " + computer_wins)//testing
+    //end click
     
-    console.log(`Round ${round} \n\n`)
-    console.log("Rock\nPaper\nScissors\nShoot!\n ")
-    var playerSelection;
-    var computerSelection;
+}
+function givePlayerSelection2 (){
+    //ask for computer selection
+    computerSelection = getComputerChoice();
+    playerSelection = document.getElementById("paper").innerHTML.toLowerCase();
+    console.log("The player has made a choice of ----------- " + playerSelection); //test
+    console.log("At the same time as the player, the computer made a choice of " + computerSelection); //test
+    console.log("Between player and computer, who wins this round? \n -\n-\n-\n"); //test
+    console.log(playRound(computerSelection, playerSelection));  
+    console.log("player current score: " + player_wins)  //testing
+    console.log("computer current score: " + computer_wins)//testing 
     
-   do { //get and display results of round, repeat round if there is a tie
-      
-        console.log("(rock, paper, or scissors?)");
-        playerSelection = prompt().toLowerCase();                                ////////player selection==results of button///////////// 
-        computerSelection = getComputerChoice();
+}
+function givePlayerSelection3 (){
+    //ask for computer selection
+    computerSelection = getComputerChoice();
+    playerSelection = document.getElementById("scissors").innerHTML.toLowerCase();
+    console.log("The player has made a choice of ----------- " + playerSelection); //test
+    console.log("At the same time as the player, the computer made a choice of " + computerSelection); //test
+    console.log("Between player and computer, who wins this round? \n -\n-\n-\n"); //test 
+    console.log(playRound(computerSelection, playerSelection)); 
+    console.log("player current score: " + player_wins)  //testing
+    console.log("computer current score: " + computer_wins)//testing
+    
+}
+    
+    
+    
+   do { 
 
     console.log("Computer's selection: " + computerSelection) 
     console.log(playRound(computerSelection, playerSelection)) //prints results of round  
 
-    if(playRound(computerSelection, playerSelection) === "tie"){
+    if(oneRoundRPS(computerSelection, playerSelection) === "tie"){
         console.log(`Let's repeat round ${round}!`)
     }
-   } while (playRound(computerSelection, playerSelection) === "tie")
+   } while (oneRoundRPS(computerSelection, playerSelection) === "tie")
 
-//}/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-console.log(player_wins)  //testing
-console.log(computer_wins)//testing
 if (player_wins > computer_wins){
     finalwinner = "player"
     console.log("This final winner is: " + finalwinner + "!")
@@ -120,16 +156,6 @@ return(finalwinner)
 };
 
 game()
-
-
-
-
-
-
-    
-    
-
-
 
 
 
