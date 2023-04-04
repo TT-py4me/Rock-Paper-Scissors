@@ -138,15 +138,7 @@ function givePlayerSelection3 (){
     console.log("computer current score: " + computer_wins)//testing
     
 }
-       
-  
 
-    console.log("Computer's selection: " + computerSelection) 
-    console.log(playRound(computerSelection, playerSelection)) //prints results of round  
-
-    if(oneRoundRPS(computerSelection, playerSelection) === "tie"){
-        console.log(`Let's repeat round ${round}!`)
-    }
    
 
 if (player_wins > computer_wins){
