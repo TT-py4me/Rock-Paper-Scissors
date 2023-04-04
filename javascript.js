@@ -139,17 +139,26 @@ function givePlayerSelection3 (){
     
 }
 
+function continueGame() {         
+  if (player_wins > computer_wins){ 
+      finalwinner = "player"
+      console.log("This final winner is: " + finalwinner + "!")
+  } else if (player_wins < computer_wins) {
+      finalwinner = "computer"
+      console.log("This final winner is: " + finalwinner + "!")
+  }
+
+  rock.removeEventListener('click', givePlayerSelection1, continueGame);
+  paper.removeEventListener('click', givePlayerSelection2, continueGame);
+  scissors.removeEventListener('click', givePlayerSelection3, continueGame);
+  console.log("Game finished")
+  
+  return(finalwinner); 
    
+}   
 
-if (player_wins > computer_wins){
-    finalwinner = "player"
-    console.log("This final winner is: " + finalwinner + "!")
-} else if (player_wins < computer_wins) {
-    finalwinner = "computer"
-    console.log("This final winner is: " + finalwinner + "!")
-}
 
-return(finalwinner)
+
 };
 
 game()
